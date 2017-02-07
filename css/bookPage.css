@@ -1,0 +1,102 @@
+body{
+	background: url(../img/11918718,800,450.jpg);
+	overflow: hidden;
+}
+body,div,img,h1{
+	margin: 0;
+	padding: 0;
+}
+#returnList{
+	position: absolute;
+	bottom: 50px;
+	left: 150px;
+	opacity: 0.6;
+}
+#content{
+	width: 1070px;
+	height: 800px;
+	position: absolute;
+	left: 300px;
+	top: 50px;
+	overflow: hidden;
+}
+#content h1{
+	text-align: center;
+	color: white;
+	font-family: "楷体";
+}
+body,div,h2,p,ul,li{
+	margin: 0px;
+	padding: 0px;
+}
+#tab{
+	width: 340px;
+	height: 600px;
+	border: 1px solid #F5F5DC;
+	position: relative;
+	right: -1420px;
+	top: 95px;
+	background:#F5F5DC;
+	border-radius: 15px; 
+/*    opacity: 0.5;*/
+}
+#tab li{
+	width:80px;
+	height:80px;
+	border:1px solid #555;
+    background: #555;	
+    margin: 20px 5px 5px 20px;
+    float: left;
+    list-style-type: none;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+
+}
+#div1 p{
+	font-family: "幼圆";
+	color:black;
+	text-align: center;
+	line-height: 50px;
+}
+#div1 h2{
+	font-family: "宋体";
+	color: black;
+	text-align: center;
+}
+.text{
+	position: absolute;
+	bottom: 20px;
+	left: 18px;
+	width: 300px;
+	height: 130px;
+	border: 1px solid white;
+    background:url(../img/4.jpg);
+}
+#tab .active{
+    background: white;
+    color:red;
+    border: 1px solid wheat;
+}
+.active p{
+	  color:red;
+}
+#logo{
+	position: absolute;
+	top: 60px;
+	left: 60px;
+}
+#text{
+	position: absolute;
+	top: -540px;
+	left: 300px;
+	border: none;
+	background: none;
+	color: white;
+	font-size: 25px;
+	font-family: "幼圆";
+}
+#text::-webkit-input-placeholder{
+	color: white;
+}

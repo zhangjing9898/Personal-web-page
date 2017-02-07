@@ -1,0 +1,424 @@
+#box{
+	width: 68%;
+	height:780px;
+	/*border: 1px solid black;*/
+	position: absolute;
+	top: 40px;
+	left: 300px;
+}
+.grid {
+   width: 68%;
+   height: 80%;
+/*   border: 1px solid black;*/
+}
+.hidden{
+	overflow: hidden;
+}
+/* Common style */
+.grid figure {
+	position: relative;
+	overflow: hidden;
+	margin: 10px;
+	min-width: 320px;
+	max-width: 480px;
+	max-height: 360px;
+	width: 10%;
+	height: 55%;
+	background: #3085a3;
+	text-align: center;
+	cursor: pointer;
+	float: left;
+	border: 0;
+}
+
+.grid figure img {
+	position: relative;
+	display: block;
+	min-height: 100%;
+	max-width: 100%;
+	opacity: 0.8;
+/*	float: left;*/
+/*	border: 1px solid green;*/
+}
+
+.grid figure figcaption {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.25em;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+	pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.grid figure figcaption > a {
+	z-index: 1000;
+	text-indent: 200%;
+	white-space: nowrap;
+	font-size: 0;
+	opacity: 0;
+}
+
+.grid figure h2 {
+	word-spacing: -0.15em;
+	font-weight: 300;
+}
+
+.grid figure h2 span {
+	font-weight: 800;
+}
+
+.grid figure h2,
+.grid figure p {
+	margin: 0;
+}
+
+.grid figure p {
+	letter-spacing: 2px;
+	font-size: 68.5%;
+}
+
+
+/*---------------*/
+/***** Layla *****/
+/*---------------*/
+
+figure.effect-layla {
+	background: #18a367;
+}
+
+figure.effect-layla img {
+	height: 390px;
+	/*float: left;*/
+}
+
+figure.effect-layla figcaption {
+	/*padding: 4em;*/
+}
+
+figure.effect-layla figcaption::before,
+figure.effect-layla figcaption::after {
+	position: absolute;
+	content: '';
+	opacity: 0;
+}
+
+figure.effect-layla figcaption::before {
+	top: 50px;
+	right: 30px;
+	bottom: 50px;
+	left: 30px;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	-webkit-transform: scale(0,1);
+	transform: scale(0,1);
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+}
+
+figure.effect-layla figcaption::after {
+	top: 30px;
+	right: 50px;
+	bottom: 30px;
+	left: 50px;
+	border-right: 1px solid #fff;
+	border-left: 1px solid #fff;
+	-webkit-transform: scale(1,0);
+	transform: scale(1,0);
+	-webkit-transform-origin: 100% 0;
+	transform-origin: 100% 0;
+}
+
+figure.effect-layla h2 {
+	padding-top: 26%;
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+}
+
+figure.effect-layla p {
+	padding: 0.5em 2em;
+	text-transform: none;
+	opacity: 0;
+	-webkit-transform: translate3d(0,-10px,0);
+	transform: translate3d(0,-10px,0);
+	font-size: 20px;
+}
+
+figure.effect-layla img,
+figure.effect-layla h2 {
+	-webkit-transform: translate3d(0,-30px,0);
+	transform: translate3d(0,-30px,0);
+}
+
+figure.effect-layla img,
+figure.effect-layla figcaption::before,
+figure.effect-layla figcaption::after,
+figure.effect-layla p {
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+}
+
+figure.effect-layla:hover img {
+	opacity: 0.7;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+figure.effect-layla:hover figcaption::before,
+figure.effect-layla:hover figcaption::after {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+figure.effect-layla:hover h2,
+figure.effect-layla:hover p {
+	opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+figure.effect-layla:hover figcaption::after,
+figure.effect-layla:hover h2,
+figure.effect-layla:hover p,
+figure.effect-layla:hover img {
+	-webkit-transition-delay: 0.15s;
+	transition-delay: 0.15s;
+}
+.logo{
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	right: 160px;
+	top: 20px;
+}
+
+/*left*/
+#div1{
+	width: 230px;
+	height: 405px;
+	position: absolute;
+	left: 40px;
+	top: 70px;
+/*	border: 1px solid black;*/
+}
+.navBox{
+	width: 230px;
+	height: 50px;
+/*	border-bottom: 1px solid black;*/
+	line-height: 50px;
+	text-align: left;
+	background: white;
+/*	border: 1px solid red;*/
+    opacity: 0.9;
+}
+.navBox span{
+	background: white;
+	font-size: 22px;
+	margin-left: 20px;
+}
+ul{
+	list-style: none;	
+}
+ul li{
+	width: 230px;
+	height: 50px;
+/*	border-bottom: 10px solid whitesmoke;*/
+	background: white;
+	text-align: center;
+	position:relative;
+	left:-20px;
+	opacity:0;
+/*	border: 1px solid lawngreen;*/
+	margin-bottom: 20px;
+	margin-left: -40px;
+}
+ul li a{
+	color: black;
+	text-decoration: none;
+	line-height: 50px;
+	font-weight: initial;
+}
+
+.button{
+	position: absolute;
+	right: 350px;
+	top: 320px;
+}
+.top,.bottom{
+	width: 50px;
+	height: 50px;
+/*	border: 1px solid black;*/
+	position: relative;
+	right: 10px;
+	margin-bottom: 80px;
+	opacity: 0.4;
+}
+#blankBox{
+	color: whitesmoke;
+	opacity: 0;
+}
+.icon-cont {
+	position:absolute;	
+	width: inherit; 
+	height: inherit;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	border: 8px solid rgba(255, 255, 255, 0);
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+		
+	color: #fff;
+	text-align: center;	
+	cursor: pointer;
+	cursor: hand;	
+	
+	-webkit-user-select: none;  
+	-moz-user-select: none; 
+	-ms-user-select: none;
+}
+
+.icon-plus1 {
+	width: 5px; 
+	height: 40px; 
+	background: #fff;
+	position: absolute;
+	left: 24px;
+	top: 7px;	
+}
+.icon-plus1:before {
+	content: "";
+	display: block;
+	position:absolute;
+	width: 40px; 
+	height: 5px; 
+	background: #fff;
+	top: 18px;
+	left: -17px;	
+	
+}
+#add{
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background: darkcyan;
+	position: absolute;
+	right: 200px;
+	top: 340px;
+}
+#transmit{
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background: darkcyan;
+	position: absolute;
+	right: 200px;
+	top: 440px;
+}
+
+/*会话框的css*/
+#demo{
+  width:80px;
+  height:200px;
+/*  border:1px solid black;*/
+  border-radius: 10px;
+  background:antiquewhite;
+  position: absolute;
+  top: 550px;
+  right: 190px;
+  opacity: 0;
+}
+#demo:before{
+  content:' ';
+  display:block;
+  width:0;
+  height:0;
+  position: absolute;
+  top: -26px;
+  left: 30px;
+  border-left:20px solid antiquewhite;
+  transform: rotate(270deg);
+  border-top:20px solid transparent;/*transparent是透明的意思*/
+  border-bottom:20px solid transparent;
+}
+#demo img{
+	position:relative;
+}
+.img_3{
+	position:absolute ;
+	left: 16px;
+	margin-bottom: 9px;
+}
+.img_1{
+    position: absolute;
+    left: 11px;
+    margin-bottom: 9px;
+}
+.add_information{
+	padding-left: 340px;
+	padding-top: 20px;
+	height: 600px;
+	width: 660px;
+	background: url(../img/28.jpg);
+	position: absolute;
+	right: -660px;
+	top: 210px;
+	font-size: 28px;
+	font-family: 幼圆;
+	color: whitesmoke;
+	border-radius: 20px;
+}
+.add_information input{
+	width: 270px;
+    font-size: 20px;
+    height: 40px;
+    border: 1px solid #e5e5e5;
+    color: whitesmoke;
+    background: url(../img/33.jpg);
+}
+.add_information input::-ms-input-placeholder{
+	color: whitesmoke;
+}
+.add_information textarea{
+	border: 1px solid #e5e5e5;
+	font-size: 20px;
+	background:url(../img/33.jpg);
+	color: whitesmoke;
+}
+#buttonCenter{
+	width: 270px;
+	height: 40px;
+    background-color: #00a4e1;
+    font-size: 18px;
+    color: white;
+    border: 0;
+    margin-top: 10px;
+  /*  cursor: pointer;*/
+}
+.closeImg{
+	position: absolute;
+    right: -2px;
+    top: 10px;
+}
+body{
+	background: url(../img/11918718,800,450.jpg);
+	overflow: hidden;
+}
+

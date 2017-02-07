@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/bookPage.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="js/starmove.js" ></script>
+		<script>
+		window.onload=function()
+		{
+			var oRetDiv=document.getElementById('returnList');
+			
+			oRetDiv.onmouseover=function()
+			{
+				startMove(oRetDiv,{opacity:100});
+			}
+			oRetDiv.onmouseout=function()
+			{
+				startMove(oRetDiv,{opacity:60});
+			}
+			/*日历*/
+			var a = document.getElementById('tab');
+				var b = a.getElementsByTagName('li');
+				var c = document.getElementById('div1');
+				for (var i = 0; i < b.length; i++) 
+				{
+					var arr=[
+					'东野圭吾系列书',
+					'三体系列',
+					'盛华三部曲',
+					'查令十字街84号',
+					'看见',
+					'狼图腾',
+					'明朝那些事',
+					'我们仨',
+					'亲爱的安德烈',
+					'愿有人陪你颠沛流离',
+					'无',
+					'无',
+					];
+					b[i].index=i;
+					b[i].onmouseover = function() 
+					{
+						for (var i = 0; i < b.length; i++) 
+						{
+							b[i].className = ' ';
+						}
+						this.className = 'active';
+						c.innerHTML='<h2>'+(this.index+1)+'月阅读</h2>'+'<p>'+arr[this.index]+'</p>';
+					}
+				}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="content">
+			<img src="img/bookPage.png" width="1070" height="800" />
+			<!--<h1>读书笔记</h1>-->
+		</div>
+		<div id="tab" >
+			<ul>
+				<li class="active" >
+					<h2>1</h2>
+					<p>JAN</p>
+				</li>
+				<li>
+					<h2>2</h2>
+					<p>FER</p>
+				</li>
+				<li>
+					<h2>3</h2>
+					<p>MAR</p>
+				</li>
+				<li>
+					<h2>4</h2>
+					<p>APR</p>
+				</li>
+				<li>
+					<h2>5</h2>
+					<p>MAY</p>
+				</li>
+				<li>
+					<h2>6</h2>
+					<p>JUN</p>
+				</li>
+				<li>
+					<h2>7</h2>
+					<p>JUL</p>
+				</li>
+				<li>
+					<h2>8</h2>
+					<p>AUG</p>
+				</li>
+				<li>
+					<h2>9</h2>
+					<p>SEP</p>
+				</li>
+				<li>
+					<h2>10</h2>
+					<p>OCT</p>
+				</li>
+				<li>
+					<h2>11</h2>
+					<p>NOV</p>
+				</li>
+				<li>
+					<h2>12</h2>
+					<p>DEC</p>
+				</li>
+			</ul>
+			<div id="div1" class="text">
+				<h2>1月阅读</h2>
+				<p>东野圭吾系列书</p>
+			</div>
+		</div>
+		<div id="returnList">
+			<a href="otherPage.html">
+			<img src="img/returnList.png" />
+		        <textarea id="text" placeholder="请输入您的读书笔记" rows="32" cols="40"></textarea>
+			</a>
+		</div>
+        <div id="logo">
+        	<img src="img/logo3.png" />
+        </div>		
+	</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/111.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/set1.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<script type="text/javascript" src="js/starmove.js" ></script>
+		<script>
+		 window.onload=function(){
+         /*相片展示*/
+        //li变成绝对定位
+				var oDiv=document.getElementById('box');
+				var aLi=oDiv.children;
+				
+				var now=0; 
+				
+				for(var i=0;i<aLi.length;i++)
+				{
+					aLi[i].style.left=aLi[i].offsetLeft+'px';
+					if(i>=9)
+					{	
+			                aLi[i].style.top='780px';
+					}
+					else
+					{
+						aLi[i].style.top=parseInt(i/3)*400+'px';
+					}
+					
+				}
+				
+				for(var i=0;i<aLi.length;i++)
+				{
+					aLi[i].style.position='absolute';
+				}
+				
+				//让下面的图片都隐藏
+				for(var i=6;i<aLi.length;i++)
+				{
+					aLi[i].style.filter='alpha(opacity:0)';
+					aLi[i].style.opacity=0;
+				}
+				
+				//按钮
+				var aBtn=document.getElementsByClassName('button')[0].children;
+				aBtn[0].onmouseover=function()
+				{
+					
+					aBtn[0].style.opacity=100;
+				}
+				aBtn[0].onmouseout=function()
+				{
+					aBtn[0].style.opacity=0.6;
+				}
+				aBtn[1].onmouseover=function()
+				{
+					
+					aBtn[1].style.opacity=100;
+				}
+				aBtn[1].onmouseout=function()
+				{
+					aBtn[1].style.opacity=0.4;
+				}
+				//上一个
+				aBtn[0].onclick=function()
+				{
+					if(now==0)
+                   {
+                   	   return;
+                   }
+                   var i=now+5;
+                   var timer=setInterval(function(){
+                   	 
+						if(i<now)//第一排
+						{   
+							startMove(aLi[i],{top:0,opacity:100});
+						}
+						else if(i<now+3)//第二排
+						{
+							startMove(aLi[i],{top:400});
+						}else//第三排
+						{
+							startMove(aLi[i],{top:800,opacity:0});
+						}
+						i--;
+                   	  if(i==now-4)
+                   	  { 
+                   	  	now-=3;
+                   	  	clearInterval(timer);
+                   	  }                   	
+                   },40);	
+				}
+				//下一个
+				aBtn[1].onclick=function()
+				{
+                   if(now>=aLi.length-6)
+                   {
+                   	return;
+                   }
+                   var i=now;
+                   var timer=setInterval(function(){
+                   	  
+						if(i<now+3)//第一排
+						{
+							startMove(aLi[i],{top:-400,opacity:0});
+						}
+						else if(i<now+6)//第二排
+						{
+							startMove(aLi[i],{top:0});
+						}else//第三排
+						{
+							startMove(aLi[i],{top:400,opacity:100});
+						}
+                       i++;
+                   	  if(i==now+9)
+                   	  { 
+                   	  	now+=3;
+                   	  	clearInterval(timer);
+                   	  }                   	
+                   },40);  
+				}
+           
+           /*左边的框*/
+            var oLeftDiv=document.getElementById('div1');
+		 	var onavBox=oLeftDiv.getElementsByClassName('navBox')[0];
+		 	var onavList=oLeftDiv.getElementsByClassName('navList')[0];
+		 	var aLeftLi=onavList.children;
+		 	var oBlankBox=document.getElementById('blankBox');
+		 	for(var i=0;i<aLeftLi.length;i++)
+		 	{
+		 		if(i%2==0)
+		 		{
+		 			aLeftLi[i].style.left=-aLeftLi[i].offsetLeft+'px';
+		 		}else
+		 		{
+		 			aLeftLi[i].style.left=aLeftLi[i].offsetLeft+'px';
+		 		}
+		 	}
+		 	oLeftDiv.onmouseover=function(){
+		 		startMove(oLeftDiv,{opacity:100});
+		 	}
+		 	oLeftDiv.onmouseout=function()
+		 	{
+		 		startMove(oLeftDiv,{opacity:60})
+		 	}
+	        
+		 	onavBox.onclick=function()
+		 	{
+                var i=0;
+                var timer=setInterval(function(){
+                	startMove(aLeftLi[i],{left:0,opacity:100});
+                	i++;
+                	if(i==aLeftLi.length)
+                	{
+                		clearInterval(timer);
+                	}
+                },100)   
+                startMove(oBlankBox,{opacity:0});
+		 	};
+		 	
+		 	//aLi加点击--字上去，收起来
+		 	
+         for(var i=0;i<aLeftLi.length;i++)
+         {
+         	aLeftLi[i].onclick=function()
+           {
+           	var oSpan=onavBox.children[0];
+           	oSpan.innerHTML=this.children[0].innerHTML;
+
+           var i=aLeftLi.length-1;
+           var timer=setInterval(function(){
+           
+            var left=i%2==0?-aLeftLi[i].offsetWidth:aLeftLi[i].offsetWidth;
+           	startMove(aLeftLi[i],{left:left,opacity:0});
+            i--;
+           	if(i==-1)
+           	{
+           		clearInterval(timer);
+           	}
+           	
+           },100);
+           startMove(oBlankBox,{opacity:100});
+          }
+         }
+         /*添加书摘*/
+         /*add展开*/
+        var oAdd=document.getElementById('add');
+        var oAddInf=document.getElementsByClassName('add_information')[0];
+        oAdd.onclick=function()
+        {
+        	startMove(oAddInf,{right:0});
+        }
+		 /*close*/
+		var oCloseImg=document.getElementsByClassName('closeImg')[0];
+		oCloseImg.onclick=function()
+		{   
+		
+			startMove(oAddInf,{right:-660});
+		}
+		var oButtonImg=document.getElementById('buttonCenter');
+		oButtonImg.onclick=function()
+		{
+			alert("提交成功！");
+			startMove(oAddInf,{right:-660});
+		}
+		/*提交书摘*/
+//	   var oSubmit=document.getElementById('buttonCenter');
+//	   
+//	   oSubmit.onclick=function()
+//	   {
+//	   	alert("进入！");
+//	   	  var oFigure=document.createElement('figure');
+//	   	  var oFigcaption=document.createElement('figcaption');
+//	   	  var oFcpH2Div=document.createElement('h2');
+//	   	  alert("1213");
+//	   	  oFcpH2Div.appendChild(oFigcaption);
+//	   	  oFigcaption.appendChild(oFigure);
+//	   	  oFigure.appendChild(oDiv);
+//	   	  alert("0000");
+//	   }
+//		<figure class="effect-layla">
+//				<img src="img/1.jpg" alt="img06"/>
+//				<figcaption>
+//					<h2>白夜行</h2>
+//					<p></p>
+//					<p>[日]东野圭吾</p>
+//					<a href="bookPage.html">View more</a>
+//				</figcaption>	
+//			</figure>
+		
+		
+		/*跳转到bookPage*/
+//		var oEffLay=document.getElementsByClassName('effect-layla');
+//		for(var i=0;i<oEffLay.length;i++)
+//		{
+//			this.onclick=function()
+//		    {
+//			   
+//		    }
+//		}
+		
+		/*邮件标志点击*/
+		var oTrasm=document.getElementById('transmit');
+		var oDemoDiv=document.getElementById('demo');
+		var open=false;
+        
+        oTrasm.onclick=function()
+        {
+        	if(open==false)
+        	{
+        		startMove(oDemoDiv,{opacity:100});
+        		open=true;
+        	}
+        	
+        }
+		
+		
+		/*end*/
+		}
+		</script>
+	</head>
+
+	<body>
+       <div id="all" style="position:absolute;z-index:-1;width:100%;height:100%;">
+       	
+       </div>
+		<div class="grid hidden" id="box">
+			<figure class="effect-layla">
+				<img src="img/1.jpg" alt="img06"/>
+				<figcaption>
+					<h2>白夜行</h2>
+					<p></p>
+					<p>[日]东野圭吾</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>	
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/2.jpg" alt="img03" />
+				<figcaption>
+					<h2>恶意</h2>
+					<p></p>
+					<p>[日]东野圭吾</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/3.jpg" alt="img04" />
+				<figcaption>
+					<h2>秘密</h2>
+					<p></p>
+					<p>[日]东野圭吾</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/4.jpg" alt="img06" />
+				<figcaption>
+					<h2>皮囊</h2>
+					<p></p>
+					<p>[中]蔡崇达</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/5.jpg" alt="img06" />
+				<figcaption>
+					<h2>我们仨</h2>
+					<p></p>
+					<p>[中]杨绛</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/6.jpg" alt="img03" />
+				<figcaption>
+					<h2>橘生淮南</h2>
+					<p></p>
+					<p>[中]八月长安</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/7.jpg" alt="img04" />
+				<figcaption>
+					<h2>围城</h2>
+					<p></p>
+					<p>[中]钱钟书</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/8.jpg" alt="img06" />
+				<figcaption>
+					<h2>亲爱的安德烈</h2>
+					<p></p>
+					<p>[台]龙应台</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/9.jpg" alt="img04" />
+				<figcaption>
+					<h2>三体</h2>
+					<p></p>
+					<p>[中]刘心慈</p>
+				<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/10.jpg" alt="img04" />
+				<figcaption>
+					<h2>拖延心理学</h2>
+					<p></p>
+					<p>无</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>		
+			<figure class="effect-layla">
+				<img src="img/11.jpg" alt="img04" />
+				<figcaption>
+					<h2>最好的我们</h2>
+					<p></p>
+					<p>无</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/12.jpg" alt="img04" />
+				<figcaption>
+					<h2>明朝那些事</h2>
+					<p></p>
+					<p>无</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/13.jpg" alt="img04" />
+				<figcaption>
+					<h2>活着</h2>
+					<p></p>
+					<p>无</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/14.jpg" alt="img04" />
+				<figcaption>
+					<h2>我与世界只差一个你</h2>
+					<p></p>
+					<p>无</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+			<figure class="effect-layla">
+				<img src="img/15.jpg" alt="img04" />
+				<figcaption>
+					<h2>狼图腾</h2>
+					<p></p>
+					<p>无</p>
+					<a href="bookPage.html">View more</a>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="button" id="button">
+        	<div class="top">
+        	<img src="img/arrow.png" />
+        	</div>
+        	<div class="bottom">
+        		<img src="img/arrowB.png" />
+        	</div>
+        </div>
+		<div class="header">
+			<div class="logo">
+				<img src="img/logo2.png" width="250" height="250" />
+			</div>
+			<div id="add">
+			<div class="icon-cont">
+				<div class="icon-plus1">
+				</div>
+			</div>	
+			</div>
+			<a id="transmit" style="background: url(img/未标题-1.jpg);">
+			</a>
+			<div id="demo">
+				<a href="http://qzone.qq.com/"><img class="img_1" src="img/qqkongjian_share.png"  width="62" height="55"/></a>
+				<a href="https://wx.qq.com/"><img class="img_1"  src="img/weixin_share.png" width="62" height="55" /></a>
+				<a href="http://tieba.baidu.com/"><img class="img_3" src="img/tieba_share.png"  width="55" height="55"/></a>
+		    </div>
+		</div>
+		<div class="add_information">
+			<div class="closeImg">
+			<img src="img/close.png" height="50" width="60" />	
+			</div>
+			<p>书名：</p>
+			<input type="text" placeholder="请输入书名"/>
+		</br>
+			<p>作者：</p>
+			<input type="text" placeholder="请输入作者名"/>
+		</br>
+			书摘：
+			</br>
+			<textarea rows="15" cols="21"></textarea>
+			</br>
+			<input type="button" value="提交" id="buttonCenter" />
+		</div>
+		<div class="warp" id="div1">
+			<div class="navBox">
+				<span>请选择   </span>
+				<em class="triangle"><i></i></em>
+			</div>
+			<ul class="navList">
+				<li>
+					<a href="#blankBox">悬疑推理</a>
+				</li>
+				<li>
+					<a href="javascript:;">青春文学</a>
+				</li>
+				<li>
+					<a href="javascript:;">世界名著</a>
+				</li>
+				<li>
+					<a href="javascript:;">杂志报刊</a>
+				</li>
+				<li>
+					<a href="javascript:;">专业书籍</a>
+				</li>
+				<li>
+					<a href="javascript:;">考试书籍</a>
+				</li>
+			</ul>
+		</div>
+		<div id="blankBox">
+			<h1>正在开发中，敬请期待...</h1>
+		</div>
+	</body>
+
+</html>
